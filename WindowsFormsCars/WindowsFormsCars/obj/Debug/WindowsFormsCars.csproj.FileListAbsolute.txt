@@ -1,0 +1,10 @@
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\bin\Debug\WindowsFormsCars.exe.config
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\bin\Debug\WindowsFormsCars.exe
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\bin\Debug\WindowsFormsCars.pdb
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\obj\Debug\WindowsFormsCars.csprojAssemblyReference.cache
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\obj\Debug\WindowsFormsCars.Properties.Resources.resources
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\obj\Debug\WindowsFormsCars.csproj.GenerateResource.cache
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\obj\Debug\WindowsFormsCars.csproj.CoreCompileInputs.cache
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\obj\Debug\WindowsFormsCars.exe
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\obj\Debug\WindowsFormsCars.pdb
+D:\2 курс\ТП\PIbd21PolushkinaEA\WindowsFormsCars\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormTruck.resources
