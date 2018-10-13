@@ -13,7 +13,6 @@ namespace WindowsFormsCars
     public partial class FormTruck : Form
     {
         private ITransport truck;
-        //private Truck truck;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -31,7 +30,7 @@ namespace WindowsFormsCars
             truck.DrawCar(gr);
             pictureBoxCars.Image = bmp;
         }
-    
+
         /// <summary>
         /// Обработка нажатия кнопки "Создать грузовик-полуприцеп"
         /// </summary>
@@ -45,7 +44,7 @@ namespace WindowsFormsCars
            pictureBoxCars.Height);
             Draw();
         }
-            /// <summary>
+        /// <summary>
         /// Обработка нажатия кнопки "Создать грузовик"
         /// </summary>
         /// <param name="sender"></param>
@@ -59,12 +58,12 @@ namespace WindowsFormsCars
            pictureBoxCars.Height);
             Draw();
         }
-            /// <summary>
-            /// Обработка нажатия кнопок управления
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-            private void buttonMove_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Обработка нажатия кнопок управления
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки
             string name = (sender as Button).Name;

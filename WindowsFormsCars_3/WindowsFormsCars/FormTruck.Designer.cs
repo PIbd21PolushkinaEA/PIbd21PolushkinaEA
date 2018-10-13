@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCreateTruckTrailer = new System.Windows.Forms.Button();
+            this.buttonCreateTruck = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.pictureBoxCars = new System.Windows.Forms.PictureBox();
-            this.buttonCreateTruck = new System.Windows.Forms.Button();
+            this.buttonCreateTruckTrailer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCars)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonCreateTruckTrailer
+            // buttonCreateTruck
             // 
-            this.buttonCreateTruckTrailer.Location = new System.Drawing.Point(280, 12);
-            this.buttonCreateTruckTrailer.Name = "buttonCreateTruckTrailer";
-            this.buttonCreateTruckTrailer.Size = new System.Drawing.Size(229, 35);
-            this.buttonCreateTruckTrailer.TabIndex = 1;
-            this.buttonCreateTruckTrailer.Text = "Создать грузовик-полуприцеп";
-            this.buttonCreateTruckTrailer.UseVisualStyleBackColor = true;
-            this.buttonCreateTruckTrailer.Click += new System.EventHandler(this.buttonCreateTruck_Click);
+            this.buttonCreateTruck.Location = new System.Drawing.Point(280, 12);
+            this.buttonCreateTruck.Name = "buttonCreateTruck";
+            this.buttonCreateTruck.Size = new System.Drawing.Size(143, 35);
+            this.buttonCreateTruck.TabIndex = 1;
+            this.buttonCreateTruck.Text = "Создать грузовик";
+            this.buttonCreateTruck.UseVisualStyleBackColor = true;
+            this.buttonCreateTruck.Click += new System.EventHandler(this.buttonCreateTruck_Click);
             // 
             // buttonUp
             // 
@@ -108,27 +108,27 @@
             this.pictureBoxCars.TabIndex = 0;
             this.pictureBoxCars.TabStop = false;
             // 
-            // buttonCreateTruck
+            // buttonCreateTruckTrailer
             // 
-            this.buttonCreateTruck.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreateTruck.Name = "buttonCreateTruck";
-            this.buttonCreateTruck.Size = new System.Drawing.Size(246, 35);
-            this.buttonCreateTruck.TabIndex = 6;
-            this.buttonCreateTruck.Text = "Создать грузовик";
-            this.buttonCreateTruck.UseVisualStyleBackColor = true;
-            this.buttonCreateTruck.Click += new System.EventHandler(this.buttonCreateTruckTrailer_Click);
+            this.buttonCreateTruckTrailer.Location = new System.Drawing.Point(12, 12);
+            this.buttonCreateTruckTrailer.Name = "buttonCreateTruckTrailer";
+            this.buttonCreateTruckTrailer.Size = new System.Drawing.Size(246, 35);
+            this.buttonCreateTruckTrailer.TabIndex = 6;
+            this.buttonCreateTruckTrailer.Text = "Создать грузовик-полуприцеп";
+            this.buttonCreateTruckTrailer.UseVisualStyleBackColor = true;
+            this.buttonCreateTruckTrailer.Click += new System.EventHandler(this.buttonCreateTruckTrailer_Click);
             // 
             // FormTruck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 453);
-            this.Controls.Add(this.buttonCreateTruck);
+            this.Controls.Add(this.buttonCreateTruckTrailer);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.buttonCreateTruckTrailer);
+            this.Controls.Add(this.buttonCreateTruck);
             this.Controls.Add(this.pictureBoxCars);
             this.Name = "FormTruck";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -141,12 +141,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxCars;
-        private System.Windows.Forms.Button buttonCreateTruckTrailer;
+        private System.Windows.Forms.Button buttonCreateTruck;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonUp;
-        private System.Windows.Forms.Button buttonCreateTruck;
+        private System.Windows.Forms.Button buttonCreateTruckTrailer;
     }
 }
 
