@@ -10,7 +10,7 @@ namespace WindowsFormsCars
     /// <summary>
     /// Класс отрисовки автомобиля
     /// </summary>
-    public class TruckTrailer :Truck
+    public class TruckTrailer : Truck
     {
         /// Дополнительный цвет
         /// </summary>
@@ -30,7 +30,7 @@ namespace WindowsFormsCars
         /// <param name="sideSpoiler">Признак наличия боковых спойлеров</param>
         /// <param name="backSpoiler">Признак наличия заднего спойлера</param>
         public TruckTrailer(int maxSpeed, float weight, Color mainColor, Color dopColor, bool
-       cabin): base(maxSpeed, weight, mainColor)
+       cabin) : base(maxSpeed, weight, mainColor)
         {
             DopColor = dopColor;
             Сabin = cabin;
@@ -56,8 +56,6 @@ namespace WindowsFormsCars
 
             Brush brBlue = new SolidBrush(Color.LightBlue);//окно
             g.FillRectangle(brBlue, _startPosX + 5, _startPosY + 15, 20, 15);
-
-            
         }
     }
 }

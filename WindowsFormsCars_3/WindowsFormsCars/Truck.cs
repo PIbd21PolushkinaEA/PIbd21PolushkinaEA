@@ -79,6 +79,5 @@ namespace WindowsFormsCars
             Brush brBlue = new SolidBrush(Color.LightBlue);//окно
             g.FillRectangle(brBlue, _startPosX + 5, _startPosY + 15, 20, 15);
         }
-            
     }
 }
