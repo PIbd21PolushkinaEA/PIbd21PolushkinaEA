@@ -12,7 +12,8 @@ namespace WindowsFormsCars
 {
     public partial class FormTruck : Form
     {
-        private Truck truck;
+        private ITransport truck;
+        //private Truck truck;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -30,26 +31,40 @@ namespace WindowsFormsCars
             truck.DrawCar(gr);
             pictureBoxCars.Image = bmp;
         }
+    
         /// <summary>
-        /// Обработка нажатия кнопки "Создать"
+        /// Обработка нажатия кнопки "Создать грузовик-полуприцеп"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateTruckTrailer_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            truck = new Truck(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
+            truck = new Truck(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
+            truck.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
+           pictureBoxCars.Height);
+            Draw();
+        }
+            /// <summary>
+        /// Обработка нажатия кнопки "Создать грузовик"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonCreateTruck_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            truck = new TruckTrailer(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
            Color.Yellow, true);
             truck.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
            pictureBoxCars.Height);
             Draw();
         }
-        /// <summary>
-        /// Обработка нажатия кнопок управления
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonMove_Click(object sender, EventArgs e)
+            /// <summary>
+            /// Обработка нажатия кнопок управления
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки
             string name = (sender as Button).Name;
@@ -71,6 +86,5 @@ namespace WindowsFormsCars
             Draw();
         }
     }
-
 }
 
