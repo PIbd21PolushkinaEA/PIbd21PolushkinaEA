@@ -10,52 +10,16 @@ namespace WindowsFormsCars
     /// <summary>
     /// Класс отрисовки автомобиля
     /// </summary>
-    public class TruckTrailer
+    public class TruckTrailer : Truck
     {
-        /// <summary>
-        /// Левая координата отрисовки автомобиля
-        /// </summary>
-        private float _startPosX;
-        /// <summary>
-        /// Правая кооридната отрисовки автомобиля
-        /// </summary>
-        private float _startPosY;
-        /// <summary>
-        /// Ширина окна отрисовки
-        /// </summary>
-        public int _pictureWidth;
-        //Высота окна отрисовки
-        public int _pictureHeight;
-        /// <summary>
-        /// Ширина отрисовки автомобиля
-        /// </summary>
-        private const int carWidth = 100;
-        /// <summary>
-        /// Ширина отрисовки автомобиля
-        /// </summary>
-        private const int carHeight = 60;
-        /// <summary>
-        /// Максимальная скорость
-        /// </summary>
-        public int MaxSpeed { private set; get; }
-        /// <summary>
-        /// Вес автомобиля
-        /// </summary>
-        public float Weight { private set; get; }
-        /// <summary>
-        /// Основной цвет кузова
-        /// </summary>
-        public Color MainColor { private set; get; }
-        /// <summary>
         /// Дополнительный цвет
         /// </summary>
         public Color DopColor { private set; get; }
         /// <summary>
-        /// Признак наличия переднего спойлера
+        /// Признак наличия кабины
         /// </summary>
-        public bool Cabin { private set; get; }
+        public bool Сabin { private set; get; }
 
-        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
@@ -66,73 +30,16 @@ namespace WindowsFormsCars
         /// <param name="sideSpoiler">Признак наличия боковых спойлеров</param>
         /// <param name="backSpoiler">Признак наличия заднего спойлера</param>
         public TruckTrailer(int maxSpeed, float weight, Color mainColor, Color dopColor, bool
-       cabin)
+       cabin) : base(maxSpeed, weight, mainColor)
         {
-            MaxSpeed = maxSpeed;
-            Weight = weight;
-            MainColor = mainColor;
             DopColor = dopColor;
-            Cabin = cabin;
-
-        }
-        /// <summary>
-        /// Установка позиции автомобиля
-        /// </summary>
-        /// <param name="x">Координата X</param>
-        /// <param name="y">Координата Y</param>
-        /// <param name="width">Ширина картинки</param>
-        /// <param name="height">Высота картинки</param>
-        public void SetPosition(int x, int y, int width, int height)
-        {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
-        }
-        /// <summary>
-        /// Изменение направления пермещения
-        /// </summary>
-        /// <param name="direction">Направление</param>
-        public void MoveTransport(Direction direction)
-        {
-            float step = MaxSpeed * 100 / Weight;
-            switch (direction)
-            {
-                // вправо
-                case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - carWidth)
-                    {
-                        _startPosX += step;
-                    }
-                    break;
-                //влево
-                case Direction.Left:
-                    if (_startPosX - step > 0)
-                    {
-                        _startPosX -= step;
-                    }
-                    break;
-                //вверх
-                case Direction.Up:
-                    if (_startPosY - step > 0)
-                    {
-                        _startPosY -= step;
-                    }
-                    break;
-                //вниз
-                case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - carHeight)
-                    {
-                        _startPosY += step;
-                    }
-                    break;
-            }
+            Сabin = cabin;
         }
         /// <summary>
         /// Отрисовка автомобиля
         /// </summary>
         /// <param name="g"></param>
-        public void DrawTruckTrailer(Graphics g)
+        public override void DrawTruckTrailer(Graphics g)
         {
             Brush spoiler = new SolidBrush(MainColor);//прицеп
             g.FillRectangle(spoiler, _startPosX + 35, _startPosY - 4, 72, 50);
@@ -149,6 +56,7 @@ namespace WindowsFormsCars
 
             Brush brBlue = new SolidBrush(Color.LightBlue);//окно
             g.FillRectangle(brBlue, _startPosX + 5, _startPosY + 15, 20, 15);
+
 
         }
     }
