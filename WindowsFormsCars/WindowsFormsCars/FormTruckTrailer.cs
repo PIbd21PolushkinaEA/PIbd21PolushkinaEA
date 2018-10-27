@@ -12,7 +12,8 @@ namespace WindowsFormsCars
 {
     public partial class FormTruckTrailer : Form
     {
-        private TruckTrailer trucktrailer;
+        private ITransport truck;
+        //private Truck truck;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -27,20 +28,35 @@ namespace WindowsFormsCars
         {
             Bitmap bmp = new Bitmap(pictureBoxTruck.Width, pictureBoxTruck.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            trucktrailer.DrawTruckTrailer(gr);
+            truck.DrawTruckTrailer(gr);
             pictureBoxTruck.Image = bmp;
         }
+
         /// <summary>
-        /// Обработка нажатия кнопки "Создать"
+        /// Обработка нажатия кнопки "Создать грузовик-полуприцеп"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateTruckTrailer_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            trucktrailer = new TruckTrailer(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
+            
+            truck = new TruckTrailer(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
            Color.Yellow, true);
-            trucktrailer.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTruck.Width,
+            truck.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTruck.Width,
+           pictureBoxTruck.Height);
+            Draw();
+        }
+        /// <summary>
+        /// Обработка нажатия кнопки "Создать грузовик"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonCreateTruck_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            truck = new Truck(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
+            truck.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTruck.Width,
            pictureBoxTruck.Height);
             Draw();
         }
@@ -56,21 +72,22 @@ namespace WindowsFormsCars
             switch (name)
             {
                 case "buttonUp":
-                    trucktrailer.MoveTransport(Direction.Up);
+                    truck.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    trucktrailer.MoveTransport(Direction.Down);
+                    truck.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    trucktrailer.MoveTransport(Direction.Left);
+                    truck.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                    trucktrailer.MoveTransport(Direction.Right);
+                    truck.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
         }
     }
-
 }
+
+
 

@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="ITransport.cs" />
+    <Compile Include="Truck.cs" />
+    <Compile Include="TruckAbstract.cs" />
     <Compile Include="TruckTrailer.cs" />
     <Compile Include="FormTruckTrailer.cs">
       <SubType>Form</SubType>
