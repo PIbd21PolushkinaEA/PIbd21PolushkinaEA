@@ -33,10 +33,10 @@ namespace WindowsFormsCars
         /// <param name="g"></param>
         public override void DrawTruckTrailer(Graphics g)
         {
-            Brush spoiler = new SolidBrush(MainColor);//прицеп
+            Brush spoiler = new SolidBrush(DopColor);//прицеп
             g.FillRectangle(spoiler, _startPosX + 35, _startPosY - 4, 72, 50);
 
-            Brush brRed = new SolidBrush(DopColor);//кабина
+            Brush brRed = new SolidBrush(MainColor);//кабина
             g.FillRectangle(brRed, _startPosX - 3, _startPosY + 10, 35, 38);
             g.FillRectangle(brRed, _startPosX + 30, _startPosY + 43, 30, 5);
 
@@ -49,7 +49,14 @@ namespace WindowsFormsCars
             Brush brBlue = new SolidBrush(Color.LightBlue);//окно
             g.FillRectangle(brBlue, _startPosX + 5, _startPosY + 15, 20, 15);
 
-
         }
+        /// Смена дополнительного цвета
+        /// </summary>
+        /// <param name="color"></param>
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
+
     }
 }

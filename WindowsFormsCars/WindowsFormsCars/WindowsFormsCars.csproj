@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="FormTruckConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTruckConfig.Designer.cs">
+      <DependentUpon>FormTruckConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormParking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormTruckConfig.resx">
+      <DependentUpon>FormTruckConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormParking.resx">
       <DependentUpon>FormParking.cs</DependentUpon>
     </EmbeddedResource>

@@ -17,6 +17,10 @@ namespace WindowsFormsCars
         /// </summary>
         MultiLevelParking parking;
         /// <summary>
+        /// Форма для добавления
+        /// </summary>
+        FormTruckConfig form;
+        /// <summary>
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
@@ -49,59 +53,6 @@ namespace WindowsFormsCars
             }
         }
         /// <summary>
-        /// Обработка нажатия кнопки "Припарковать автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetTruck_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var truck = new Truck(100, 1000, dialog.Color);
-                    int place = parking[listBoxLevels.SelectedIndex] + truck;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-
-        }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetTruckTrailer_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var truck = new TruckTrailer(100, 1000, dialog.Color, dialogDop.Color,
-                    true);
-                        int place = parking[listBoxLevels.SelectedIndex] + truck;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка",
-                           MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
-
-        }
-        /// <summary>
         /// Обработка нажатия кнопки "Забрать"
         /// </summary>
         /// <param name="sender"></param>
@@ -112,16 +63,16 @@ namespace WindowsFormsCars
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var car = parking[listBoxLevels.SelectedIndex] -
+                    var truck = parking[listBoxLevels.SelectedIndex] -
                    Convert.ToInt32(maskedTextBox.Text);
-                    if (car != null)
+                    if (truck != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeTruck.Width,
                        pictureBoxTakeTruck.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 5, pictureBoxTakeTruck.Width,
+                        truck.SetPosition(5, 5, pictureBoxTakeTruck.Width,
                        pictureBoxTakeTruck.Height);
-                        car.DrawTruckTrailer(gr);
+                        truck.DrawTruckTrailer(gr);
                         pictureBoxTakeTruck.Image = bmp;
                     }
                     else
@@ -143,5 +94,36 @@ namespace WindowsFormsCars
         {
             Draw();
         }
+        /// <summary>
+        /// Обработка нажатия кнопки "Добавить автомобиль"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSetTruck_Click(object sender, EventArgs e)
+        {
+            form = new FormTruckConfig();
+            form.AddEvent(AddCar);
+            form.Show();
+        }
+        /// <summary>
+        /// Метод добавления машины
+        /// </summary>
+        /// <param name="car"></param>
+        private void AddCar(ITransport truck)
+        {
+            if (truck != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + truck;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Грузовик не удалось поставить");
+                }
+            }
+        }
+
     }
 }
