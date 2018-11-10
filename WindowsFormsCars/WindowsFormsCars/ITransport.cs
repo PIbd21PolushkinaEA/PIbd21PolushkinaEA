@@ -27,5 +27,10 @@ namespace WindowsFormsCars
         /// </summary>
         /// <param name="g"></param>
         void DrawTruckTrailer(Graphics g);
+        /// <summary>
+        /// Смена основного цвета автомобиля
+        /// </summary>
+        /// <param name="color"></param>
+        void SetMainColor(Color color);
     }
 }

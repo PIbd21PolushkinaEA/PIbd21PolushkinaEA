@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.buttonSetTruck = new System.Windows.Forms.Button();
-            this.buttonSetTruckTrailer = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonTakeTruck = new System.Windows.Forms.Button();
             this.pictureBoxTakeTruck = new System.Windows.Forms.PictureBox();
@@ -38,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTruck)).BeginInit();
@@ -50,26 +49,6 @@
             this.pictureBoxParking.Size = new System.Drawing.Size(733, 500);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
-            // 
-            // buttonSetTruck
-            // 
-            this.buttonSetTruck.Location = new System.Drawing.Point(753, 177);
-            this.buttonSetTruck.Name = "buttonSetTruck";
-            this.buttonSetTruck.Size = new System.Drawing.Size(225, 45);
-            this.buttonSetTruck.TabIndex = 1;
-            this.buttonSetTruck.Text = "Припарковать грузовик";
-            this.buttonSetTruck.UseVisualStyleBackColor = true;
-            this.buttonSetTruck.Click += new System.EventHandler(this.buttonSetTruck_Click);
-            // 
-            // buttonSetTruckTrailer
-            // 
-            this.buttonSetTruckTrailer.Location = new System.Drawing.Point(753, 228);
-            this.buttonSetTruckTrailer.Name = "buttonSetTruckTrailer";
-            this.buttonSetTruckTrailer.Size = new System.Drawing.Size(225, 45);
-            this.buttonSetTruckTrailer.TabIndex = 2;
-            this.buttonSetTruckTrailer.Text = "Припарковать грузовик-полуприцеп";
-            this.buttonSetTruckTrailer.UseVisualStyleBackColor = true;
-            this.buttonSetTruckTrailer.Click += new System.EventHandler(this.buttonSetTruckTrailer_Click);
             // 
             // groupBox1
             // 
@@ -122,7 +101,7 @@
             // 
             this.listBoxLevels.FormattingEnabled = true;
             this.listBoxLevels.ItemHeight = 16;
-            this.listBoxLevels.Location = new System.Drawing.Point(774, 71);
+            this.listBoxLevels.Location = new System.Drawing.Point(775, 38);
             this.listBoxLevels.Name = "listBoxLevels";
             this.listBoxLevels.Size = new System.Drawing.Size(185, 100);
             this.listBoxLevels.TabIndex = 4;
@@ -131,22 +110,31 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(832, 39);
+            this.label2.Location = new System.Drawing.Point(832, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Уровни:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(800, 217);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 45);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Заказать грузовик";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonSetTruck_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 500);
+            this.ClientSize = new System.Drawing.Size(1002, 510);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonSetTruckTrailer);
-            this.Controls.Add(this.buttonSetTruck);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
             this.Text = "Парковка";
@@ -162,8 +150,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.Button buttonSetTruck;
-        private System.Windows.Forms.Button buttonSetTruckTrailer;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBoxTakeTruck;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
@@ -171,5 +157,6 @@
         private System.Windows.Forms.Button buttonTakeTruck;
         private System.Windows.Forms.ListBox listBoxLevels;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
