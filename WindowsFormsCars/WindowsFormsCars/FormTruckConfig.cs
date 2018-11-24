@@ -47,7 +47,7 @@ namespace WindowsFormsCars
                 pictureBoxTruck.Image = bmp;
             }
         }
- 
+
         /// <summary>
         /// Добавление события
         /// </summary>
@@ -81,8 +81,8 @@ namespace WindowsFormsCars
         /// <param name="e"></param>
         private void labelTruckTrailer_MouseDown(object sender, MouseEventArgs e)
         {
-           labelTruckTrailer.DoDragDrop(labelTruckTrailer.Text, DragDropEffects.Move |
-           DragDropEffects.Copy);
+            labelTruckTrailer.DoDragDrop(labelTruckTrailer.Text, DragDropEffects.Move |
+            DragDropEffects.Copy);
         }
         /// <summary>
         /// Проверка получаемой информации (ее типа на соответствие требуемому)
