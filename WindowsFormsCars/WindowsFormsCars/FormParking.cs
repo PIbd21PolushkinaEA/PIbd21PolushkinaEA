@@ -34,7 +34,8 @@ namespace WindowsFormsCars
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
-            listBoxLevels.SelectedIndex = 0;
+            listBoxLevels.SelectedIndex = 0;
+
         }
         /// <summary>
         /// Метод отрисовки парковки
@@ -50,7 +51,8 @@ namespace WindowsFormsCars
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;
-            }
+            }
+
         }
         /// <summary>
         /// Обработка нажатия кнопки "Забрать"
@@ -125,5 +127,48 @@ namespace WindowsFormsCars
             }
         }
 
+        /// <summary>
+        /// Обработка нажатия пункта меню "Сохранить"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+            }
+        }
+        /// <summary>
+        /// Обработка нажатия пункта меню "Загрузить"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.LoadData(openFileDialog.FileName))
+                {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                Draw();
+            }
+        }
     }
 }

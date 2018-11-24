@@ -27,18 +27,35 @@ namespace WindowsFormsCars
             DopColor = dopColor;
             Сabin = cabin;
         }
+
+        /// Конструктор
+        public TruckTrailer(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 5)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Сabin = Convert.ToBoolean(strs[4]);
+            }
+        }
         /// <summary>
         /// Отрисовка автомобиля
         /// </summary>
         /// <param name="g"></param>
         public override void DrawTruckTrailer(Graphics g)
         {
-            Brush spoiler = new SolidBrush(DopColor);//прицеп
-            g.FillRectangle(spoiler, _startPosX + 35, _startPosY - 4, 72, 50);
+            if (Сabin)
+            {
+                Brush cabindop = new SolidBrush(DopColor);//прицеп
+                g.FillRectangle(cabindop, _startPosX + 35, _startPosY - 4, 72, 50);
+            }
 
-            Brush brRed = new SolidBrush(MainColor);//кабина
-            g.FillRectangle(brRed, _startPosX - 3, _startPosY + 10, 35, 38);
-            g.FillRectangle(brRed, _startPosX + 30, _startPosY + 43, 30, 5);
+            Brush br = new SolidBrush(MainColor);//кабина
+            g.FillRectangle(br, _startPosX - 3, _startPosY + 10, 35, 38);
+            g.FillRectangle(br, _startPosX + 30, _startPosY + 43, 30, 5);
 
             Brush brBlack = new SolidBrush(Color.Black);//колеса
             g.FillEllipse(brBlack, _startPosX + 83, _startPosY + 40, 17, 17);
@@ -57,6 +74,9 @@ namespace WindowsFormsCars
         {
             DopColor = color;
         }
-
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Сabin;
+        }
     }
 }
