@@ -19,7 +19,7 @@ namespace WindowsFormsCars
         /// <summary>
         /// Сколько мест на каждом уровне
         /// </summary>
-        private const int countPlaces = 20;
+        private const int countPlaces = 15;
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -27,7 +27,8 @@ namespace WindowsFormsCars
         /// <summary>
         /// Высота окна отрисовки
         /// </summary>
-        private int pictureHeight;
+        private int pictureHeight;
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -66,7 +67,7 @@ namespace WindowsFormsCars
         /// </summary>
         /// <param name="filename">Путь и имя файла</param>
         /// <returns></returns>
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -85,10 +86,9 @@ namespace WindowsFormsCars
                         WriteToFile("Level" + Environment.NewLine, fs);
                         for (int i = 0; i < countPlaces; i++)
                         {
-                            var truck = level[i];
-                            if (truck != null)
+                            try
                             {
-                                //если место не пустое
+                                var truck = level[i];
                                 //Записываем тип мшаины
                                 if (truck.GetType().Name == "Truck")
                                 {
@@ -101,11 +101,12 @@ namespace WindowsFormsCars
                                 //Записываемые параметры
                                 WriteToFile(truck + Environment.NewLine, fs);
                             }
+                            catch (Exception ex) { }
+                            finally { }
                         }
                     }
                 }
             }
-            return true;
         }
         /// <summary>
         /// Метод записи информации в файл
@@ -122,11 +123,11 @@ namespace WindowsFormsCars
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             string bufferTextFromFile = "";
             using (FileStream fs = new FileStream(filename, FileMode.Open))
@@ -156,7 +157,7 @@ namespace WindowsFormsCars
             else
             {
                 //если нет такой записи, то это не те данные
-                return false;
+                throw new Exception("Неверный формат файла");
             }
             int counter = -1;
             ITransport truck = null;
@@ -185,8 +186,7 @@ namespace WindowsFormsCars
                 }
                 parkingStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = truck;
             }
-            return true;
-        }
+        }
     }
 }
 
