@@ -75,35 +75,26 @@ namespace WindowsFormsCars
             }
             using (FileStream fs = new FileStream(filename, FileMode.Create))
             {
-                using (BufferedStream bs = new BufferedStream(fs))
+                //Записываем количество уровней
+                WriteToFile("CountLeveles:" + parkingStages.Count + Environment.NewLine,
+               fs);
+                foreach (var level in parkingStages)
                 {
-                    //Записываем количество уровней
-                    WriteToFile("CountLeveles:" + parkingStages.Count +
-                   Environment.NewLine, fs);
-                    foreach (var level in parkingStages)
+                    //Начинаем уровень
+                    WriteToFile("Level" + Environment.NewLine, fs);
+                    foreach (ITransport truck in level)
                     {
-                        //Начинаем уровень
-                        WriteToFile("Level" + Environment.NewLine, fs);
-                        for (int i = 0; i < countPlaces; i++)
+                        //Записываем тип мшаины
+                        if (truck.GetType().Name == "Truck")
                         {
-                            try
-                            {
-                                var truck = level[i];
-                                //Записываем тип мшаины
-                                if (truck.GetType().Name == "Truck")
-                                {
-                                    WriteToFile(i + ":Truck:", fs);
-                                }
-                                if (truck.GetType().Name == "TruckTrailer")
-                                {
-                                    WriteToFile(i + ":TruckTrailer:", fs);
-                                }
-                                //Записываемые параметры
-                                WriteToFile(truck + Environment.NewLine, fs);
-                            }
-                            catch (Exception ex) { }
-                            finally { }
+                            WriteToFile(level.GetKey + ":Truck:", fs);
                         }
+                        if (truck.GetType().Name == "TruckTrailer")
+                        {
+                            WriteToFile(level.GetKey + ":TruckTrailer:", fs);
+                        }
+                        //Записываемые параметры
+                        WriteToFile(truck + Environment.NewLine, fs);
                     }
                 }
             }
@@ -160,6 +151,7 @@ namespace WindowsFormsCars
                 throw new Exception("Неверный формат файла");
             }
             int counter = -1;
+            int counterTruck = 0;
             ITransport truck = null;
             for (int i = 1; i < strs.Length; ++i)
             {
@@ -168,6 +160,7 @@ namespace WindowsFormsCars
                 {
                     //начинаем новый уровень
                     counter++;
+                    counterTruck = 0;
                     parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
                     pictureHeight));
                     continue;
@@ -184,9 +177,16 @@ namespace WindowsFormsCars
                 {
                     truck = new TruckTrailer(strs[i].Split(':')[2]);
                 }
-                parkingStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = truck;
+                parkingStages[counter][counterTruck++] = truck;
             }
         }
+        /// <summary>
+        /// Сортировка уровней
+        /// </summary>
+        public void Sort()
+        {
+            parkingStages.Sort();
+        }
     }
 }
 
