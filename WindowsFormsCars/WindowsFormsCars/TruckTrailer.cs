@@ -10,7 +10,7 @@ namespace WindowsFormsCars
     /// <summary>
     /// Класс отрисовки автомобиля
     /// </summary>
-    public class TruckTrailer : Truck
+    public class TruckTrailer : Truck, IComparable<TruckTrailer>, IEquatable<TruckTrailer>
     {
         /// Дополнительный цвет
         /// </summary>
@@ -78,5 +78,85 @@ namespace WindowsFormsCars
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Сabin;
         }
+        /// <summary>
+        /// Метод интерфейса IComparable для класса SportCar
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(TruckTrailer other)
+        {
+            var res = (this is Truck).CompareTo(other is Truck);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Сabin != other.Сabin)
+            {
+                return Сabin.CompareTo(other.Сabin);
+            }
+
+            return 0;
+        }
+        /// <summary>
+        /// Метод интерфейса IEquatable для класса SportCar
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(TruckTrailer other)
+        {
+            var res = (this as Truck).Equals(other as Truck);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Сabin != other.Сabin)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            TruckTrailer carObj = obj as TruckTrailer;
+            if (carObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }
